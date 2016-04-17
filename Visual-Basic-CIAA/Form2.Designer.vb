@@ -23,17 +23,17 @@ Partial Class Form2
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.BtnBuscarPuertos = New System.Windows.Forms.Button()
+        Me.CbxPuertos = New System.Windows.Forms.ComboBox()
+        Me.BtnConectar2 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.ComboBox1)
-        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.BtnConectar2)
+        Me.GroupBox1.Controls.Add(Me.CbxPuertos)
+        Me.GroupBox1.Controls.Add(Me.BtnBuscarPuertos)
         Me.GroupBox1.Location = New System.Drawing.Point(22, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(363, 142)
@@ -41,31 +41,31 @@ Partial Class Form2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GroupBox1"
         '
-        'Button1
+        'BtnBuscarPuertos
         '
-        Me.Button1.Location = New System.Drawing.Point(16, 30)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(143, 35)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BtnBuscarPuertos.Location = New System.Drawing.Point(16, 30)
+        Me.BtnBuscarPuertos.Name = "BtnBuscarPuertos"
+        Me.BtnBuscarPuertos.Size = New System.Drawing.Size(143, 35)
+        Me.BtnBuscarPuertos.TabIndex = 0
+        Me.BtnBuscarPuertos.Text = "Buscar Puertos"
+        Me.BtnBuscarPuertos.UseVisualStyleBackColor = True
         '
-        'ComboBox1
+        'CbxPuertos
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(180, 86)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(168, 21)
-        Me.ComboBox1.TabIndex = 1
+        Me.CbxPuertos.FormattingEnabled = True
+        Me.CbxPuertos.Location = New System.Drawing.Point(180, 86)
+        Me.CbxPuertos.Name = "CbxPuertos"
+        Me.CbxPuertos.Size = New System.Drawing.Size(168, 21)
+        Me.CbxPuertos.TabIndex = 1
         '
-        'Button2
+        'BtnConectar2
         '
-        Me.Button2.Location = New System.Drawing.Point(16, 86)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(139, 33)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.BtnConectar2.Location = New System.Drawing.Point(16, 86)
+        Me.BtnConectar2.Name = "BtnConectar2"
+        Me.BtnConectar2.Size = New System.Drawing.Size(139, 33)
+        Me.BtnConectar2.TabIndex = 2
+        Me.BtnConectar2.Text = "Conectar"
+        Me.BtnConectar2.UseVisualStyleBackColor = True
         '
         'Form2
         '
@@ -81,7 +81,7 @@ Partial Class Form2
     End Sub
 
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Button2 As Button
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents BtnConectar2 As Button
+    Friend WithEvents CbxPuertos As ComboBox
+    Friend WithEvents BtnBuscarPuertos As Button
 End Class
