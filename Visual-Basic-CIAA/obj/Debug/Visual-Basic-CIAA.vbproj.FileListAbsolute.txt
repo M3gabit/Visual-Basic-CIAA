@@ -2,6 +2,7 @@ C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Ba
 C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Basic-CIAA\bin\Debug\Visual-Basic-CIAA.exe
 C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Basic-CIAA\bin\Debug\Visual-Basic-CIAA.pdb
 C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Basic-CIAA\bin\Debug\Visual-Basic-CIAA.xml
+C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Basic-CIAA\obj\Debug\Visual-Basic-CIAA.vbprojResolveAssemblyReference.cache
 C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Basic-CIAA\obj\Debug\WindowsApplication1.Form1.resources
 C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Basic-CIAA\obj\Debug\WindowsApplication1.Form2.resources
 C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Basic-CIAA\obj\Debug\WindowsApplication1.Resources.resources

@@ -102,6 +102,16 @@
         End If
     End Sub
 
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+        VarConectar = True
+        LblConexion.Image = My.Resources.equis
+        SpPuerto.Write("desconectar" + Chr(0))
+        Threading.Thread.Sleep(300)
+
+        SpPuerto.Dispose()
+        SpPuerto.Close()
+    End Sub
+
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
         Form2.Show()
     End Sub
@@ -252,4 +262,5 @@
     Private Sub ConectarConLaCIAAToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConectarConLaCIAAToolStripMenuItem.Click
         Call ToolStripButton1_Click(sender, e)
     End Sub
+
 End Class
