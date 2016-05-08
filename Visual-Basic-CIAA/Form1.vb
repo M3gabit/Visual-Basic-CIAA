@@ -4,17 +4,20 @@
     Dim VarConexion As String
     Dim aux As Integer
     Dim VarRecibir As Boolean = False
-    Dim Tiempos() As Integer = {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}
+    Dim Tiempos() As Integer = {50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}
 
     Dim Vector1(650) As Double
     Dim VectorAux(650) As Double
     Dim Vector2(650) As Double
     Dim Vector3(650) As Double
 
+    Dim Datos_ch1(649) As Double
+    Dim k As Integer
+
     Dim BMP As New Drawing.Bitmap(1000, 300)
     Dim GFX As Graphics = Graphics.FromImage(BMP)
 
-    Dim CyanPen As New Pen(Color.FromArgb(255, 95, 158, 180), 3)
+    Dim CyanPen As New Pen(Color.FromArgb(255, 95, 158, 180), 2)
     'Dim greenPen As New Pen(Color.FromArgb(255, 0, 255, 0), 10)
 
 
@@ -158,14 +161,39 @@
 
             If StrBufferEntrada <> "" Then
 
+                GFX.FillRectangle(Brushes.White, 0, 0, PictureBox1.Width, PictureBox1.Height)
+                For i = 0 To 9
+                    GFX.DrawLine(Pens.LightGray, 0, Convert.ToSingle(PictureBox1.Height / 10 * i), PictureBox1.Width, Convert.ToSingle(PictureBox1.Height / 10 * i))
+                Next
+
+                'Grafico de la grilla(Verticales)
+                For i = 0 To 9
+                    GFX.DrawLine(Pens.LightGray, Convert.ToSingle(PictureBox1.Width / 10 * i), 0, Convert.ToSingle(PictureBox1.Width / 10 * i), PictureBox1.Width)
+                Next
+
+
+
 
                 If StrBufferEntrada(0) = "A" Then
                     StrAux = StrBufferEntrada.Substring(1)
                     If StrAux <> "" Then
                         Try
-                            Numero = Convert.ToDouble(StrAux)
+                            Numero = Convert.ToSingle(StrAux)
                             Valor = Math.Round(((Numero * 3.3) / 1023), 2)
                             TxtCh1.Text = Valor.ToString
+
+                            For i = 0 To 648
+                                Datos_ch1(i) = Datos_ch1(i + 1)
+                            Next
+                            'Datos_ch1(648) = Numero
+                            Datos_ch1(649) = Numero / 1023.0 * 247
+
+                            For i = 0 To 648
+                                GFX.DrawLine(CyanPen, i, Convert.ToSingle(247 - Datos_ch1(i)), i + 1, Convert.ToSingle(247 - Datos_ch1(i + 1)))
+
+                            Next
+
+                            PictureBox1.Image = BMP
 
                         Catch ex As Exception
 
@@ -212,6 +240,11 @@
             End If
 
         End If
+
+        k = k + 1
+        If (k >= 650) Then
+            k = 0
+        End If
     End Sub
 
     Private Sub ChxCh1_CheckedChanged(sender As Object, e As EventArgs) Handles ChxCh1.CheckedChanged
@@ -222,7 +255,12 @@
             If Convert.ToInt16(CbxTiempoCh1.Text) > 950 Then
                 SpPuerto.Write(CbxTiempoCh1.Text + Chr(0))
             Else
-                SpPuerto.Write("0" + CbxTiempoCh1.Text + Chr(0))
+                If Convert.ToInt16(CbxTiempoCh1.Text) < 90 Then
+                    SpPuerto.Write("0" + "0" + CbxTiempoCh1.Text + Chr(0))
+                Else
+                    SpPuerto.Write("0" + CbxTiempoCh1.Text + Chr(0))
+                End If
+
             End If
             CbxTiempoCh1.Enabled = False
 
@@ -294,59 +332,55 @@
         LblEstado.Text = "Estado: Detenido"
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'GFX.FillRectangle(Brushes.LightGray, 0, 0, PictureBox1.Width, PictureBox1.Height)
-        'Grafico de la grilla (Horizontales)
-        For i = 0 To 9
-            GFX.DrawLine(Pens.LightGray, 0, Convert.ToSingle(PictureBox1.Height / 10 * i), PictureBox1.Width, Convert.ToSingle(PictureBox1.Height / 10 * i))
-        Next
+    'Private Sub Button1_Click(sender As Object, e As EventArgs)
+    '    'GFX.FillRectangle(Brushes.LightGray, 0, 0, PictureBox1.Width, PictureBox1.Height)
+    '    'Grafico de la grilla (Horizontales)
+    '    For i = 0 To 9
+    '        GFX.DrawLine(Pens.LightGray, 0, Convert.ToSingle(PictureBox1.Height / 10 * i), PictureBox1.Width, Convert.ToSingle(PictureBox1.Height / 10 * i))
+    '    Next
 
-        'Grafico de la grilla(Verticales)
-        For i = 0 To 9
-            GFX.DrawLine(Pens.LightGray, Convert.ToSingle(PictureBox1.Width / 10 * i), 0, Convert.ToSingle(PictureBox1.Width / 10 * i), PictureBox1.Width)
-        Next
-        'GFX.DrawLine(Pens.LightGray, 0, PictureBox1.Height - 1, PictureBox1.Width, PictureBox1.Height - 1)
-        'GFX.DrawLine(Pens.LightGray, PictureBox1.Width - 1, 0, PictureBox1.Width - 1, PictureBox1.Width)
+    '    'Grafico de la grilla(Verticales)
+    '    For i = 0 To 9
+    '        GFX.DrawLine(Pens.LightGray, Convert.ToSingle(PictureBox1.Width / 10 * i), 0, Convert.ToSingle(PictureBox1.Width / 10 * i), PictureBox1.Width)
+    '    Next
+    '    'GFX.DrawLine(Pens.LightGray, 0, PictureBox1.Height - 1, PictureBox1.Width, PictureBox1.Height - 1)
+    '    'GFX.DrawLine(Pens.LightGray, PictureBox1.Width - 1, 0, PictureBox1.Width - 1, PictureBox1.Width)
 
-        For i = 0 To 649
-            GFX.DrawLine(CyanPen, i, Convert.ToSingle(Vector1(i) + 125), i + 1, Convert.ToSingle(Vector1(i + 1) + 125))
+    '    For i = 0 To 649
+    '        GFX.DrawLine(CyanPen, i, Convert.ToSingle(Vector1(i) + 125), i + 1, Convert.ToSingle(Vector1(i + 1) + 125))
 
-        Next
-        PictureBox1.Image = BMP
-    End Sub
+    '    Next
+    '    PictureBox1.Image = BMP
+    'End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        GFX.FillRectangle(Brushes.White, 0, 0, PictureBox1.Width, PictureBox1.Height)
-        PictureBox1.Image = BMP
+    'Private Sub Timer1_Tick(sender As Object, e As EventArgs)
+    '    GFX.FillRectangle(Brushes.White, 0, 0, PictureBox1.Width, PictureBox1.Height)
+    '    PictureBox1.Image = BMP
 
-        For i = 0 To 9
-            GFX.DrawLine(Pens.LightGray, 0, Convert.ToSingle(PictureBox1.Height / 10 * i), PictureBox1.Width, Convert.ToSingle(PictureBox1.Height / 10 * i))
-        Next
+    '    For i = 0 To 9
+    '        GFX.DrawLine(Pens.LightGray, 0, Convert.ToSingle(PictureBox1.Height / 10 * i), PictureBox1.Width, Convert.ToSingle(PictureBox1.Height / 10 * i))
+    '    Next
 
-        'Grafico de la grilla(Verticales)
-        For i = 0 To 9
-            GFX.DrawLine(Pens.LightGray, Convert.ToSingle(PictureBox1.Width / 10 * i), 0, Convert.ToSingle(PictureBox1.Width / 10 * i), PictureBox1.Width)
-        Next
+    '    'Grafico de la grilla(Verticales)
+    '    For i = 0 To 9
+    '        GFX.DrawLine(Pens.LightGray, Convert.ToSingle(PictureBox1.Width / 10 * i), 0, Convert.ToSingle(PictureBox1.Width / 10 * i), PictureBox1.Width)
+    '    Next
 
-        For i = 0 To 648
-            VectorAux(i) = Vector1(i + 1)
-        Next
-        VectorAux(649) = Vector1(0)
-
-
-        Vector1 = VectorAux
-
-        For i = 0 To 649
-            GFX.DrawLine(CyanPen, i, Convert.ToSingle(Vector1(i) + 125), i + 1, Convert.ToSingle(Vector1(i + 1) + 125))
-
-        Next
-        PictureBox1.Image = BMP
+    '    For i = 0 To 648
+    '        VectorAux(i) = Vector1(i + 1)
+    '    Next
+    '    VectorAux(649) = Vector1(0)
 
 
-    End Sub
+    '    Vector1 = VectorAux
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Timer1.Enabled = True
+    '    For i = 0 To 649
+    '        GFX.DrawLine(CyanPen, i, Convert.ToSingle(Vector1(i) + 125), i + 1, Convert.ToSingle(Vector1(i + 1) + 125))
 
-    End Sub
+    '    Next
+    '    PictureBox1.Image = BMP
+
+
+    'End Sub
+
 End Class
