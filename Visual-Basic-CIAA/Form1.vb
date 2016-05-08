@@ -6,6 +6,13 @@
     Dim VarRecibir As Boolean = False
     Dim Tiempos() As Integer = {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}
 
+    Dim Vector1(1000) As Double
+    Dim Vector2(1000) As Double
+    Dim Vector3(1000) As Double
+
+    Dim BMP As New Drawing.Bitmap(1000, 300)
+    Dim GFX As Graphics = Graphics.FromImage(BMP)
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         Form2.BtnConectar2.Enabled = False
@@ -17,6 +24,15 @@
         CbxTiempoCh1.Text = CbxTiempoCh1.Items(0)
         CbxTiempoCh2.Text = CbxTiempoCh1.Items(0)
         CbxTiempoCh3.Text = CbxTiempoCh1.Items(0)
+
+        For t = 0 To 999
+            Vector1(t) = 100 * Math.Sin(2 * 3.14 * 5 * t / 500) '5 ciclos en los 500 valores
+            Vector2(t) = 100 * Math.Sin(2 * 3.14 * 5 * t / 500 + 2.09) '5 ciclos en los 500 valores
+            Vector3(t) = 100 * Math.Sin(2 * 3.14 * 5 * t / 500 + 4.18) 'Esos valores sumados es el desfasage en radianes
+        Next t
+
+
+
 
     End Sub
 
@@ -114,20 +130,6 @@
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
         Form2.Show()
-    End Sub
-
-    Private Sub BtnRecibir_Click(sender As Object, e As EventArgs) Handles BtnRecibir.Click
-        If VarRecibir Then
-            VarRecibir = False
-            BtnRecibir.Text = "Recibir"
-            LblEstado.Text = "Estado: Detenido"
-
-        Else
-            VarRecibir = True
-            SpPuerto.DiscardInBuffer()
-            BtnRecibir.Text = "Detener"
-            LblEstado.Text = "Estado: Recibiendo"
-        End If
     End Sub
 
     Private Sub DatoRecibido(sender As Object, e As IO.Ports.SerialDataReceivedEventArgs) Handles SpPuerto.DataReceived
@@ -263,4 +265,42 @@
         Call ToolStripButton1_Click(sender, e)
     End Sub
 
+
+    Private Sub ToolStripBtn_Iniciar_Click(sender As Object, e As EventArgs) Handles ToolStripBtn_Iniciar.Click
+        VarRecibir = True
+        LblEstado.Text = "Estado: Recibiendo"
+    End Sub
+
+    Private Sub ToolStripBtn_Pausar_Click(sender As Object, e As EventArgs) Handles ToolStripBtn_Pausar.Click
+        VarRecibir = False
+        LblEstado.Text = "Estado: En pausa"
+    End Sub
+
+    Private Sub ToolStripBtn_Detener_Click(sender As Object, e As EventArgs) Handles ToolStripBtn_Detener.Click
+        VarRecibir = False
+        LblEstado.Text = "Estado: Detenido"
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        GFX.FillRectangle(Brushes.LightGray, 0, 0, PictureBox1.Width, PictureBox1.Height)
+        'Grafico de la grilla (Horizontales)
+        For i = 0 To 9
+            GFX.DrawLine(Pens.White, 0, Convert.ToSingle(PictureBox1.Height / 10 * i), PictureBox1.Width, Convert.ToSingle(PictureBox1.Height / 10 * i))
+        Next
+
+        'Grafico de la grilla(Verticales)
+        For i = 0 To 9
+            GFX.DrawLine(Pens.White, Convert.ToSingle(PictureBox1.Width / 10 * i), 0, Convert.ToSingle(PictureBox1.Width / 10 * i), PictureBox1.Width)
+        Next
+        'GFX.DrawLine(Pens.LightGray, 0, PictureBox1.Height - 1, PictureBox1.Width, PictureBox1.Height - 1)
+        'GFX.DrawLine(Pens.LightGray, PictureBox1.Width - 1, 0, PictureBox1.Width - 1, PictureBox1.Width)
+
+        For i = 0 To 649
+            GFX.DrawLine(Pens.Red, i, Convert.ToSingle(Vector1(i) + 125), i + 1, Convert.ToSingle(Vector1(i + 1) + 125))
+
+        Next
+
+
+        PictureBox1.Image = BMP
+    End Sub
 End Class
