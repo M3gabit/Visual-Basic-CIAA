@@ -6,12 +6,16 @@
     Dim VarRecibir As Boolean = False
     Dim Tiempos() As Integer = {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}
 
-    Dim Vector1(1000) As Double
-    Dim Vector2(1000) As Double
-    Dim Vector3(1000) As Double
+    Dim Vector1(650) As Double
+    Dim VectorAux(650) As Double
+    Dim Vector2(650) As Double
+    Dim Vector3(650) As Double
 
     Dim BMP As New Drawing.Bitmap(1000, 300)
     Dim GFX As Graphics = Graphics.FromImage(BMP)
+
+    Dim CyanPen As New Pen(Color.FromArgb(255, 95, 158, 180), 3)
+    'Dim greenPen As New Pen(Color.FromArgb(255, 0, 255, 0), 10)
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -25,13 +29,22 @@
         CbxTiempoCh2.Text = CbxTiempoCh1.Items(0)
         CbxTiempoCh3.Text = CbxTiempoCh1.Items(0)
 
-        For t = 0 To 999
-            Vector1(t) = 100 * Math.Sin(2 * 3.14 * 5 * t / 500) '5 ciclos en los 500 valores
-            Vector2(t) = 100 * Math.Sin(2 * 3.14 * 5 * t / 500 + 2.09) '5 ciclos en los 500 valores
-            Vector3(t) = 100 * Math.Sin(2 * 3.14 * 5 * t / 500 + 4.18) 'Esos valores sumados es el desfasage en radianes
+        For t = 0 To 649
+            Vector1(t) = 100 * Math.Sin(2 * 3.14 * 5 * t / 650) '5 ciclos en los 500 valores
+            Vector2(t) = 100 * Math.Sin(2 * 3.14 * 5 * t / 650 + 2.09) '5 ciclos en los 500 valores
+            Vector3(t) = 100 * Math.Sin(2 * 3.14 * 5 * t / 650 + 4.18) 'Esos valores sumados es el desfasage en radianes
         Next t
 
+        For i = 0 To 9
+            GFX.DrawLine(Pens.LightGray, 0, Convert.ToSingle(PictureBox1.Height / 10 * i), PictureBox1.Width, Convert.ToSingle(PictureBox1.Height / 10 * i))
+        Next
 
+        'Grafico de la grilla(Verticales)
+        For i = 0 To 9
+            GFX.DrawLine(Pens.LightGray, Convert.ToSingle(PictureBox1.Width / 10 * i), 0, Convert.ToSingle(PictureBox1.Width / 10 * i), PictureBox1.Width)
+        Next
+
+        PictureBox1.Image = BMP
 
 
     End Sub
@@ -282,25 +295,58 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        GFX.FillRectangle(Brushes.LightGray, 0, 0, PictureBox1.Width, PictureBox1.Height)
+        'GFX.FillRectangle(Brushes.LightGray, 0, 0, PictureBox1.Width, PictureBox1.Height)
         'Grafico de la grilla (Horizontales)
         For i = 0 To 9
-            GFX.DrawLine(Pens.White, 0, Convert.ToSingle(PictureBox1.Height / 10 * i), PictureBox1.Width, Convert.ToSingle(PictureBox1.Height / 10 * i))
+            GFX.DrawLine(Pens.LightGray, 0, Convert.ToSingle(PictureBox1.Height / 10 * i), PictureBox1.Width, Convert.ToSingle(PictureBox1.Height / 10 * i))
         Next
 
         'Grafico de la grilla(Verticales)
         For i = 0 To 9
-            GFX.DrawLine(Pens.White, Convert.ToSingle(PictureBox1.Width / 10 * i), 0, Convert.ToSingle(PictureBox1.Width / 10 * i), PictureBox1.Width)
+            GFX.DrawLine(Pens.LightGray, Convert.ToSingle(PictureBox1.Width / 10 * i), 0, Convert.ToSingle(PictureBox1.Width / 10 * i), PictureBox1.Width)
         Next
         'GFX.DrawLine(Pens.LightGray, 0, PictureBox1.Height - 1, PictureBox1.Width, PictureBox1.Height - 1)
         'GFX.DrawLine(Pens.LightGray, PictureBox1.Width - 1, 0, PictureBox1.Width - 1, PictureBox1.Width)
 
         For i = 0 To 649
-            GFX.DrawLine(Pens.Red, i, Convert.ToSingle(Vector1(i) + 125), i + 1, Convert.ToSingle(Vector1(i + 1) + 125))
+            GFX.DrawLine(CyanPen, i, Convert.ToSingle(Vector1(i) + 125), i + 1, Convert.ToSingle(Vector1(i + 1) + 125))
 
         Next
-
-
         PictureBox1.Image = BMP
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        GFX.FillRectangle(Brushes.White, 0, 0, PictureBox1.Width, PictureBox1.Height)
+        PictureBox1.Image = BMP
+
+        For i = 0 To 9
+            GFX.DrawLine(Pens.LightGray, 0, Convert.ToSingle(PictureBox1.Height / 10 * i), PictureBox1.Width, Convert.ToSingle(PictureBox1.Height / 10 * i))
+        Next
+
+        'Grafico de la grilla(Verticales)
+        For i = 0 To 9
+            GFX.DrawLine(Pens.LightGray, Convert.ToSingle(PictureBox1.Width / 10 * i), 0, Convert.ToSingle(PictureBox1.Width / 10 * i), PictureBox1.Width)
+        Next
+
+        For i = 0 To 648
+            VectorAux(i) = Vector1(i + 1)
+        Next
+        VectorAux(649) = Vector1(0)
+
+
+        Vector1 = VectorAux
+
+        For i = 0 To 649
+            GFX.DrawLine(CyanPen, i, Convert.ToSingle(Vector1(i) + 125), i + 1, Convert.ToSingle(Vector1(i + 1) + 125))
+
+        Next
+        PictureBox1.Image = BMP
+
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Timer1.Enabled = True
+
     End Sub
 End Class

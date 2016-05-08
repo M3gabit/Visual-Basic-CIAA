@@ -35,6 +35,9 @@ Partial Class Form1
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -67,9 +70,6 @@ Partial Class Form1
         Me.ToolStripBtn_Pausar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripBtn_Detener = New System.Windows.Forms.ToolStripButton()
         Me.SpPuerto = New System.IO.Ports.SerialPort(Me.components)
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
@@ -78,6 +78,7 @@ Partial Class Form1
         Me.ToolStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -85,7 +86,6 @@ Partial Class Form1
         Me.GroupBox3.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip2.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStripContainer1
@@ -195,6 +195,33 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(728, 247)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 17
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(728, 199)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 16
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Location = New System.Drawing.Point(8, 143)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(650, 250)
+        Me.PictureBox1.TabIndex = 15
+        Me.PictureBox1.TabStop = False
         '
         'GroupBox5
         '
@@ -490,31 +517,9 @@ Partial Class Form1
         'SpPuerto
         '
         '
-        'PictureBox1
+        'Timer1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(8, 143)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(650, 250)
-        Me.PictureBox1.TabIndex = 15
-        Me.PictureBox1.TabStop = False
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(728, 199)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 16
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(728, 247)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 17
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Timer1.Interval = 50
         '
         'Form1
         '
@@ -536,6 +541,7 @@ Partial Class Form1
         Me.ToolStrip1.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
@@ -549,7 +555,6 @@ Partial Class Form1
         Me.MenuStrip1.PerformLayout()
         Me.ToolStrip2.ResumeLayout(False)
         Me.ToolStrip2.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
