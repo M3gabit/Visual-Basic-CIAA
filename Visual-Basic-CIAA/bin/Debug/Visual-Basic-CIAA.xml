@@ -27,6 +27,16 @@ Visual-Basic-CIAA
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:WindowsApplication1.My.Resources.Resources.needle">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:WindowsApplication1.My.Resources.Resources.tachometer">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:WindowsApplication1.My.Resources.Resources.tilde">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

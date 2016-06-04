@@ -17,6 +17,11 @@
     Dim BMP As New Drawing.Bitmap(1000, 300)
     Dim GFX As Graphics = Graphics.FromImage(BMP)
 
+    Dim imgrot As New Drawing.Bitmap(1000, 500)
+
+
+
+
     Dim CyanPen As New Pen(Color.FromArgb(255, 95, 158, 180), 2)
     'Dim greenPen As New Pen(Color.FromArgb(255, 0, 255, 0), 10)
 
@@ -48,7 +53,6 @@
         Next
 
         PictureBox1.Image = BMP
-
 
     End Sub
 
@@ -330,6 +334,29 @@
     Private Sub ToolStripBtn_Detener_Click(sender As Object, e As EventArgs) Handles ToolStripBtn_Detener.Click
         VarRecibir = False
         LblEstado.Text = "Estado: Detenido"
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim graf As Graphics = Graphics.FromImage(imgrot)
+        graf.Clear(Color.Transparent)
+
+        graf.TranslateTransform(160.0F, 160.0F)
+        graf.RotateTransform(156.0F)
+        graf.TranslateTransform(-160.0F, -160.0F)
+        graf.DrawImage(My.Resources.needle, New Rectangle(New Point(0.0F, 0.0F), New Size(320.0F, 320.0F)))
+        PictureBox2.Image = imgrot
+
+    End Sub
+
+    Private Sub TrackBar1_ValueChanged(sender As Object, e As EventArgs) Handles TrackBar1.ValueChanged
+        Dim graf As Graphics = Graphics.FromImage(imgrot)
+        graf.Clear(Color.Transparent)
+
+        graf.TranslateTransform(160.0F, 160.0F)
+        graf.RotateTransform(TrackBar1.Value)
+        graf.TranslateTransform(-160.0F, -160.0F)
+        graf.DrawImage(My.Resources.needle, New Rectangle(New Point(0.0F, 0.0F), New Size(320.0F, 320.0F)))
+        PictureBox2.Image = imgrot
     End Sub
 
     'Private Sub Button1_Click(sender As Object, e As EventArgs)

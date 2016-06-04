@@ -35,6 +35,9 @@ Partial Class Form1
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.TrackBar1 = New System.Windows.Forms.TrackBar()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -75,6 +78,8 @@ Partial Class Form1
         Me.ToolStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -95,13 +100,13 @@ Partial Class Form1
         'ToolStripContainer1.ContentPanel
         '
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.TabControl1)
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1028, 437)
+        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1110, 518)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.LeftToolStripPanelVisible = False
         Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStripContainer1.Name = "ToolStripContainer1"
         Me.ToolStripContainer1.RightToolStripPanelVisible = False
-        Me.ToolStripContainer1.Size = New System.Drawing.Size(1028, 511)
+        Me.ToolStripContainer1.Size = New System.Drawing.Size(1110, 592)
         Me.ToolStripContainer1.TabIndex = 0
         Me.ToolStripContainer1.Text = "ToolStripContainer1"
         '
@@ -116,7 +121,7 @@ Partial Class Form1
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LblConexion, Me.ToolStripLabel2, Me.ToolStripSeparator1, Me.PgbConexion, Me.ToolStripSeparator2, Me.LblEstado, Me.ToolStripSeparator3})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1028, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1110, 25)
         Me.ToolStrip1.Stretch = True
         Me.ToolStrip1.TabIndex = 0
         '
@@ -175,21 +180,53 @@ Partial Class Form1
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1028, 437)
+        Me.TabControl1.Size = New System.Drawing.Size(1110, 518)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.TrackBar1)
+        Me.TabPage1.Controls.Add(Me.Button1)
+        Me.TabPage1.Controls.Add(Me.PictureBox2)
         Me.TabPage1.Controls.Add(Me.PictureBox1)
         Me.TabPage1.Controls.Add(Me.GroupBox5)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1020, 411)
+        Me.TabPage1.Size = New System.Drawing.Size(1102, 492)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'TrackBar1
+        '
+        Me.TrackBar1.Location = New System.Drawing.Point(790, 66)
+        Me.TrackBar1.Maximum = 156
+        Me.TrackBar1.Minimum = -119
+        Me.TrackBar1.Name = "TrackBar1"
+        Me.TrackBar1.Size = New System.Drawing.Size(291, 45)
+        Me.TrackBar1.TabIndex = 19
+        Me.TrackBar1.TickFrequency = 10
+        Me.TrackBar1.Value = -119
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(790, 13)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(102, 30)
+        Me.Button1.TabIndex = 17
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.tachometer
+        Me.PictureBox2.Location = New System.Drawing.Point(691, 144)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(320, 320)
+        Me.PictureBox2.TabIndex = 16
+        Me.PictureBox2.TabStop = False
         '
         'PictureBox1
         '
@@ -403,7 +440,7 @@ Partial Class Form1
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1020, 411)
+        Me.TabPage2.Size = New System.Drawing.Size(1040, 492)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -414,7 +451,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1028, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1110, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -437,7 +474,7 @@ Partial Class Form1
         Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripSeparator4, Me.ToolStripBtn_Iniciar, Me.ToolStripBtn_Pausar, Me.ToolStripBtn_Detener})
         Me.ToolStrip2.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip2.Name = "ToolStrip2"
-        Me.ToolStrip2.Size = New System.Drawing.Size(1028, 25)
+        Me.ToolStrip2.Size = New System.Drawing.Size(1110, 25)
         Me.ToolStrip2.Stretch = True
         Me.ToolStrip2.TabIndex = 1
         '
@@ -498,7 +535,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1028, 511)
+        Me.ClientSize = New System.Drawing.Size(1110, 592)
         Me.Controls.Add(Me.ToolStripContainer1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
@@ -514,6 +551,9 @@ Partial Class Form1
         Me.ToolStrip1.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
+        Me.TabPage1.PerformLayout()
+        CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
@@ -576,4 +616,7 @@ Partial Class Form1
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents TrackBar1 As TrackBar
 End Class

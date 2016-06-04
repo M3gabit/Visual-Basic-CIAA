@@ -73,6 +73,26 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property needle() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("needle", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property tachometer() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("tachometer", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property tilde() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("tilde", resourceCulture)
