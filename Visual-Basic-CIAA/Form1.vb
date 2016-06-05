@@ -179,12 +179,25 @@
 
 
                 If StrBufferEntrada(0) = "A" Then
-                    StrAux = StrBufferEntrada.Substring(1)
+                    'StrAux = StrBufferEntrada.Substring(1)
+                    StrAux = StrBufferEntrada.Remove(5)
+                    StrAux = StrAux.Substring(1)
+
                     If StrAux <> "" Then
                         Try
                             Numero = Convert.ToSingle(StrAux)
                             Valor = Math.Round(((Numero * 3.3) / 1023), 2)
                             TxtCh1.Text = Valor.ToString
+
+                            Dim graf As Graphics = Graphics.FromImage(imgrot)
+                            graf.Clear(Color.Transparent)
+
+                            graf.TranslateTransform(160.0F, 160.0F)
+                            graf.RotateTransform(Numero)
+                            graf.TranslateTransform(-160.0F, -160.0F)
+                            graf.DrawImage(My.Resources.needle, New Rectangle(New Point(0.0F, 0.0F), New Size(320.0F, 320.0F)))
+                            PictureBox2.Image = imgrot
+
 
                             For i = 0 To 648
                                 Datos_ch1(i) = Datos_ch1(i + 1)

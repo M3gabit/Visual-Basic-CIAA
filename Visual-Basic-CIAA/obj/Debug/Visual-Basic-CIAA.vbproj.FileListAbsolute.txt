@@ -9,4 +9,3 @@ C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Ba
 C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Basic-CIAA\obj\Debug\Visual-Basic-CIAA.exe
 C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Basic-CIAA\obj\Debug\Visual-Basic-CIAA.xml
 C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Basic-CIAA\obj\Debug\Visual-Basic-CIAA.pdb
-C:\Users\juand\Documents\Visual Studio 2015\Projects\Visual-Basic-CIAA\Visual-Basic-CIAA\obj\Debug\Visual-Basic-CIAA.vbprojResolveAssemblyReference.cache
