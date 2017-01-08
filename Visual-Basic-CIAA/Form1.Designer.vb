@@ -23,9 +23,9 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.LblConexion = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.PgbConexion = New System.Windows.Forms.ToolStripProgressBar()
@@ -34,6 +34,11 @@ Partial Class Form1
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TrackBar1 = New System.Windows.Forms.TrackBar()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
@@ -57,20 +62,23 @@ Partial Class Form1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.CbxTiempoCh2 = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConectarConLaCIAAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DocumentaciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.SpPuerto = New System.IO.Ports.SerialPort(Me.components)
-        Me.LblConexion = New System.Windows.Forms.ToolStripLabel()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripBtn_Iniciar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripBtn_Pausar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripBtn_Detener = New System.Windows.Forms.ToolStripButton()
+        Me.SpPuerto = New System.IO.Ports.SerialPort(Me.components)
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
@@ -84,10 +92,11 @@ Partial Class Form1
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        Me.MenuStrip1.SuspendLayout()
-        Me.ToolStrip2.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
+        Me.ToolStrip2.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStripContainer1
@@ -100,7 +109,7 @@ Partial Class Form1
         'ToolStripContainer1.ContentPanel
         '
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.TabControl1)
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1110, 505)
+        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1110, 502)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.LeftToolStripPanelVisible = False
         Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 0)
@@ -124,6 +133,16 @@ Partial Class Form1
         Me.ToolStrip1.Size = New System.Drawing.Size(1110, 25)
         Me.ToolStrip1.Stretch = True
         Me.ToolStrip1.TabIndex = 0
+        '
+        'LblConexion
+        '
+        Me.LblConexion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.LblConexion.AutoSize = False
+        Me.LblConexion.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.LblConexion.Image = Global.WindowsApplication1.My.Resources.Resources.equis
+        Me.LblConexion.Name = "LblConexion"
+        Me.LblConexion.Size = New System.Drawing.Size(22, 22)
+        Me.LblConexion.Text = "ToolStripLabel1"
         '
         'ToolStripLabel2
         '
@@ -170,24 +189,63 @@ Partial Class Form1
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1110, 505)
+        Me.TabControl1.Size = New System.Drawing.Size(1110, 502)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Button2)
+        Me.TabPage1.Controls.Add(Me.ListView1)
         Me.TabPage1.Controls.Add(Me.TrackBar1)
         Me.TabPage1.Controls.Add(Me.Button1)
-        Me.TabPage1.Controls.Add(Me.PictureBox2)
-        Me.TabPage1.Controls.Add(Me.PictureBox1)
         Me.TabPage1.Controls.Add(Me.GroupBox5)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1102, 479)
+        Me.TabPage1.Size = New System.Drawing.Size(1102, 476)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'ListView1
+        '
+        Me.ListView1.Activation = System.Windows.Forms.ItemActivation.OneClick
+        Me.ListView1.AllowColumnReorder = True
+        Me.ListView1.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader5, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
+        Me.ListView1.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.ListView1.GridLines = True
+        Me.ListView1.HideSelection = False
+        Me.ListView1.LabelEdit = True
+        Me.ListView1.Location = New System.Drawing.Point(322, 161)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(301, 206)
+        Me.ListView1.TabIndex = 20
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.ListView1.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Canal"
+        Me.ColumnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ColumnHeader5.Width = 71
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Valor Recibido"
+        Me.ColumnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ColumnHeader2.Width = 103
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Dato"
+        Me.ColumnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Unidad"
+        Me.ColumnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TrackBar1
         '
@@ -409,18 +467,38 @@ Partial Class Form1
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.PictureBox2)
+        Me.TabPage2.Controls.Add(Me.PictureBox1)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1102, 492)
+        Me.TabPage2.Size = New System.Drawing.Size(1102, 476)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.tachometer
+        Me.PictureBox2.Location = New System.Drawing.Point(724, 39)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(320, 320)
+        Me.PictureBox2.TabIndex = 17
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Location = New System.Drawing.Point(24, 109)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(650, 250)
+        Me.PictureBox1.TabIndex = 16
+        Me.PictureBox1.TabStop = False
+        '
         'MenuStrip1
         '
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1110, 24)
@@ -440,100 +518,107 @@ Partial Class Form1
         Me.ConectarConLaCIAAToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
         Me.ConectarConLaCIAAToolStripMenuItem.Text = "Conectar con la CIAA"
         '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AcercaDeToolStripMenuItem, Me.DocumentaciónToolStripMenuItem})
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(53, 20)
+        Me.ToolStripMenuItem1.Text = "Ayuda"
+        '
+        'AcercaDeToolStripMenuItem
+        '
+        Me.AcercaDeToolStripMenuItem.Name = "AcercaDeToolStripMenuItem"
+        Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.AcercaDeToolStripMenuItem.Text = "Acerca de..."
+        '
+        'DocumentaciónToolStripMenuItem
+        '
+        Me.DocumentaciónToolStripMenuItem.Name = "DocumentaciónToolStripMenuItem"
+        Me.DocumentaciónToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.DocumentaciónToolStripMenuItem.Text = "Documentación"
+        '
         'ToolStrip2
         '
+        Me.ToolStrip2.AutoSize = False
         Me.ToolStrip2.BackColor = System.Drawing.SystemColors.Control
         Me.ToolStrip2.Dock = System.Windows.Forms.DockStyle.None
         Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripSeparator4, Me.ToolStripBtn_Iniciar, Me.ToolStripBtn_Pausar, Me.ToolStripBtn_Detener})
         Me.ToolStrip2.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip2.Name = "ToolStrip2"
-        Me.ToolStrip2.Size = New System.Drawing.Size(1110, 38)
+        Me.ToolStrip2.Size = New System.Drawing.Size(1110, 41)
         Me.ToolStrip2.Stretch = True
         Me.ToolStrip2.TabIndex = 1
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 38)
-        '
-        'SpPuerto
-        '
-        '
-        'LblConexion
-        '
-        Me.LblConexion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.LblConexion.AutoSize = False
-        Me.LblConexion.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.LblConexion.Image = Global.WindowsApplication1.My.Resources.Resources.equis
-        Me.LblConexion.Name = "LblConexion"
-        Me.LblConexion.Size = New System.Drawing.Size(22, 22)
-        Me.LblConexion.Text = "ToolStripLabel1"
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.tachometer
-        Me.PictureBox2.Location = New System.Drawing.Point(691, 144)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(320, 320)
-        Me.PictureBox2.TabIndex = 16
-        Me.PictureBox2.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox1.Location = New System.Drawing.Point(8, 143)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(650, 250)
-        Me.PictureBox1.TabIndex = 15
-        Me.PictureBox1.TabStop = False
         '
         'ToolStripButton1
         '
         Me.ToolStripButton1.BackColor = System.Drawing.SystemColors.Control
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.Image = Global.WindowsApplication1.My.Resources.Resources.usb_symbol3
+        Me.ToolStripButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.ToolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(59, 35)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(84, 38)
         Me.ToolStripButton1.Text = "Conectar"
         '
         'ToolStripButton2
         '
         Me.ToolStripButton2.BackColor = System.Drawing.SystemColors.Control
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
+        Me.ToolStripButton2.Image = Global.WindowsApplication1.My.Resources.Resources.button_off
+        Me.ToolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(76, 35)
+        Me.ToolStripButton2.Size = New System.Drawing.Size(102, 38)
         Me.ToolStripButton2.Text = "Desconectar"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 41)
         '
         'ToolStripBtn_Iniciar
         '
         Me.ToolStripBtn_Iniciar.BackColor = System.Drawing.SystemColors.Control
         Me.ToolStripBtn_Iniciar.Image = Global.WindowsApplication1.My.Resources.Resources.play
+        Me.ToolStripBtn_Iniciar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripBtn_Iniciar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripBtn_Iniciar.Name = "ToolStripBtn_Iniciar"
-        Me.ToolStripBtn_Iniciar.Size = New System.Drawing.Size(59, 35)
+        Me.ToolStripBtn_Iniciar.Size = New System.Drawing.Size(76, 38)
         Me.ToolStripBtn_Iniciar.Text = "Iniciar"
         '
         'ToolStripBtn_Pausar
         '
         Me.ToolStripBtn_Pausar.BackColor = System.Drawing.SystemColors.Control
         Me.ToolStripBtn_Pausar.Image = Global.WindowsApplication1.My.Resources.Resources.pausa
+        Me.ToolStripBtn_Pausar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripBtn_Pausar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripBtn_Pausar.Name = "ToolStripBtn_Pausar"
-        Me.ToolStripBtn_Pausar.Size = New System.Drawing.Size(62, 35)
+        Me.ToolStripBtn_Pausar.Size = New System.Drawing.Size(79, 38)
         Me.ToolStripBtn_Pausar.Text = "Pausar"
         '
         'ToolStripBtn_Detener
         '
         Me.ToolStripBtn_Detener.AutoSize = False
         Me.ToolStripBtn_Detener.BackColor = System.Drawing.SystemColors.Control
-        Me.ToolStripBtn_Detener.Image = Global.WindowsApplication1.My.Resources.Resources._stop
+        Me.ToolStripBtn_Detener.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripBtn_Detener.Image = Global.WindowsApplication1.My.Resources.Resources.stop2
+        Me.ToolStripBtn_Detener.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ToolStripBtn_Detener.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripBtn_Detener.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripBtn_Detener.Name = "ToolStripBtn_Detener"
-        Me.ToolStripBtn_Detener.Size = New System.Drawing.Size(68, 35)
+        Me.ToolStripBtn_Detener.Size = New System.Drawing.Size(100, 35)
         Me.ToolStripBtn_Detener.Text = "Detener"
+        '
+        'SpPuerto
+        '
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(718, 241)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(94, 49)
+        Me.Button2.TabIndex = 21
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -566,12 +651,13 @@ Partial Class Form1
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ToolStrip2.ResumeLayout(False)
         Me.ToolStrip2.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -619,8 +705,17 @@ Partial Class Form1
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Button1 As Button
     Friend WithEvents TrackBar1 As TrackBar
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents AcercaDeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DocumentaciónToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ListView1 As ListView
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents ColumnHeader5 As ColumnHeader
+    Friend WithEvents ColumnHeader3 As ColumnHeader
+    Friend WithEvents ColumnHeader4 As ColumnHeader
+    Friend WithEvents Button2 As Button
 End Class

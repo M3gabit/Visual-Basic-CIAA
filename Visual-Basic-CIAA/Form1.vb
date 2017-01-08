@@ -54,6 +54,18 @@
 
         PictureBox1.Image = BMP
 
+
+
+        'Inicializo el listview
+
+        For variable = 0 To 10
+            ListView1.Items.Add("")
+            ListView1.Items.Item(variable).SubItems.Add("")
+            ListView1.Items.Item(variable).SubItems.Add("")
+            ListView1.Items.Item(variable).SubItems.Add("")
+
+        Next
+
     End Sub
 
 
@@ -141,11 +153,14 @@
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
         VarConectar = True
         LblConexion.Image = My.Resources.equis
-        SpPuerto.Write("desconectar" + Chr(0))
-        Threading.Thread.Sleep(300)
+        If SpPuerto.IsOpen Then
+            SpPuerto.Write("desconectar" + Chr(0))
+            Threading.Thread.Sleep(300)
 
-        SpPuerto.Dispose()
-        SpPuerto.Close()
+            SpPuerto.Dispose()
+            SpPuerto.Close()
+        End If
+
     End Sub
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
@@ -188,6 +203,9 @@
                             Numero = Convert.ToSingle(StrAux)
                             Valor = Math.Round(((Numero * 3.3) / 1023), 2)
                             TxtCh1.Text = Valor.ToString
+                            ListView1.Items.Item(0).SubItems(0).Text = "ADC canal 1"
+                            ListView1.Items.Item(0).SubItems(1).Text = Numero.ToString
+                            ListView1.Items.Item(0).SubItems(2).Text = Valor.ToString
 
                             Dim graf As Graphics = Graphics.FromImage(imgrot)
                             graf.Clear(Color.Transparent)
@@ -228,6 +246,7 @@
                             Numero = Convert.ToDouble(StrAux)
                             Valor = Math.Round(((Numero * 3.3) / 1023), 2)
                             TxtCh2.Text = Valor.ToString
+
 
                         Catch ex As Exception
 
@@ -370,6 +389,18 @@
         graf.TranslateTransform(-160.0F, -160.0F)
         graf.DrawImage(My.Resources.needle, New Rectangle(New Point(0.0F, 0.0F), New Size(320.0F, 320.0F)))
         PictureBox2.Image = imgrot
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        ListView1.Items.Clear()
+        For variable = 0 To 10
+            ListView1.Items.Add("")
+            ListView1.Items.Item(variable).SubItems.Add("")
+            ListView1.Items.Item(variable).SubItems.Add("")
+            ListView1.Items.Item(variable).SubItems.Add("")
+
+        Next
+
     End Sub
 
     'Private Sub Button1_Click(sender As Object, e As EventArgs)
